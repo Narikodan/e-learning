@@ -51,7 +51,10 @@ class TeacherProfile(models.Model):
     # Example:
     qualifications = models.CharField(max_length=255)
 
+    
+
 class Course(models.Model):
+    category = models.CharField(max_length=255, null=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
     teacher = models.ForeignKey(TeacherProfile, on_delete=models.CASCADE, related_name='courses_created')

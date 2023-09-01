@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import authenticate
 
-from .models import CustomUser
+from .models import Course, CustomUser
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -34,4 +34,9 @@ class UserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ('email', 'first_name', 'last_name')  # Include other user data fields as needed
+
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ('id', 'category', 'title', 'description', 'teacher')
 
